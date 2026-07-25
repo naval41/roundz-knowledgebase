@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1270px; height: 760px;
+    background: linear-gradient(135deg, #0A0F1C 0%, #0D1B2A 40%, #1B2838 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #E2E8F0;
+    overflow: hidden;
+    position: relative;
+    padding: 50px 70px;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  .glow {
+    position: absolute; bottom: -100px; left: 200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .r-icon {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, #0EA5E9, #0284C7);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+    z-index: 1;
+    position: relative;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .header h1 .cyan { color: #38BDF8; }
+  .header h1 .green { color: #4ADE80; }
+  .header p {
+    font-size: 16px;
+    color: #94A3B8;
+  }
+
+  .table-container {
+    z-index: 1;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(14, 165, 233, 0.12);
+  }
+  thead th {
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  thead th:first-child {
+    text-align: left;
+    color: #64748B;
+    width: 36%;
+  }
+  thead th:nth-child(2) {
+    color: #F87171;
+    background: rgba(239, 68, 68, 0.06);
+    width: 32%;
+  }
+  thead th:nth-child(3) {
+    color: #4ADE80;
+    background: rgba(34, 197, 94, 0.06);
+    width: 32%;
+  }
+  tbody td {
+    padding: 14px 24px;
+    font-size: 14.5px;
+    border-top: 1px solid rgba(14, 165, 233, 0.06);
+  }
+  tbody td:first-child {
+    color: #CBD5E1;
+    font-weight: 600;
+  }
+  tbody td:nth-child(2) {
+    color: #94A3B8;
+    background: rgba(239, 68, 68, 0.03);
+  }
+  tbody td:nth-child(3) {
+    color: #E2E8F0;
+    font-weight: 600;
+    background: rgba(34, 197, 94, 0.03);
+  }
+  tbody tr:hover {
+    background: rgba(14, 165, 233, 0.04);
+  }
+  .improvement {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+    font-weight: 700;
+  }
+  .improvement.good {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ADE80;
+  }
+  .x-mark { color: #F87171; margin-right: 6px; }
+  .check-mark { color: #4ADE80; margin-right: 6px; }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <div class="logo">
+    <div class="r-icon">R</div>
+    <span>roundz.ai</span>
+  </div>
+
+  <div class="header">
+    <h1>From <span class="cyan">Hiring Chaos</span> to <span class="green">Hiring Clarity</span></h1>
+    <p>How engineering teams transform their hiring process with the Roundz 80/20 model</p>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Before Roundz</th>
+          <th>With Roundz</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Time to screen candidates</td>
+          <td><span class="x-mark">✗</span> 40+ hours/week</td>
+          <td><span class="check-mark">✓</span> 4 hours/week <span class="improvement good">10x</span></td>
+        </tr>
+        <tr>
+          <td>Average time-to-hire</td>
+          <td><span class="x-mark">✗</span> 45 days</td>
+          <td><span class="check-mark">✓</span> 12 days <span class="improvement good">73% faster</span></td>
+        </tr>
+        <tr>
+          <td>Top-candidate drop-off</td>
+          <td><span class="x-mark">✗</span> 60% abandon process</td>
+          <td><span class="check-mark">✓</span> Under 15% <span class="improvement good">4x better</span></td>
+        </tr>
+        <tr>
+          <td>CTO involvement</td>
+          <td><span class="x-mark">✗</span> Every single screen</td>
+          <td><span class="check-mark">✓</span> Final round only <span class="improvement good">80% less</span></td>
+        </tr>
+        <tr>
+          <td>Cheating & fraud detection</td>
+          <td><span class="x-mark">✗</span> Manual suspicion</td>
+          <td><span class="check-mark">✓</span> AI-verified real-time <span class="improvement good">92%</span></td>
+        </tr>
+        <tr>
+          <td>Interview consistency</td>
+          <td><span class="x-mark">✗</span> Varies by interviewer</td>
+          <td><span class="check-mark">✓</span> Standardized rubric</td>
+        </tr>
+        <tr>
+          <td>Screening availability</td>
+          <td><span class="x-mark">✗</span> Business hours only</td>
+          <td><span class="check-mark">✓</span> 24/7 all time zones</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

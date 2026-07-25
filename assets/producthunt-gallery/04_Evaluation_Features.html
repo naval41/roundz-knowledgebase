@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1270px; height: 760px;
+    background: linear-gradient(135deg, #0A0F1C 0%, #0D1B2A 40%, #1B2838 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #E2E8F0;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  .glow-1 {
+    position: absolute; top: 100px; right: -50px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .logo {
+    position: absolute;
+    top: 28px;
+    left: 60px;
+    font-size: 20px;
+    font-weight: 800;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .r-icon {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, #0EA5E9, #0284C7);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+  }
+
+  .left {
+    flex: 1;
+    padding: 80px 40px 60px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+  }
+  .left h2 {
+    font-size: 15px;
+    color: #64748B;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .left h1 {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+  }
+  .left h1 .green { color: #4ADE80; }
+
+  /* Evaluation card */
+  .eval-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 440px;
+    backdrop-filter: blur(10px);
+  }
+  .eval-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+  }
+  .eval-title {
+    font-size: 14px;
+    color: #64748B;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .eval-verdict {
+    font-size: 14px;
+    font-weight: 800;
+    padding: 5px 16px;
+    border-radius: 8px;
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ADE80;
+    letter-spacing: 1px;
+  }
+
+  .eval-row {
+    display: flex;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .eval-label {
+    width: 130px;
+    font-size: 13px;
+    color: #64748B;
+    font-weight: 600;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .eval-value {
+    font-size: 14px;
+    color: #CBD5E1;
+    line-height: 1.5;
+  }
+  .eval-value.green { color: #4ADE80; }
+  .eval-value.amber { color: #FBBF24; }
+  .eval-value.blue { color: #38BDF8; }
+  .eval-value.muted { color: #475569; font-style: italic; }
+
+  .right {
+    flex: 1;
+    padding: 80px 60px 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .feature {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    border-radius: 14px;
+    padding: 22px 20px;
+  }
+  .feature-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .feature-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #E2E8F0;
+    margin-bottom: 6px;
+  }
+  .feature-desc {
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="glow-1"></div>
+
+  <div class="logo">
+    <div class="r-icon">R</div>
+    <span>roundz.ai</span>
+  </div>
+
+  <div class="left">
+    <h2>AI Evaluation Artifacts</h2>
+    <h1>Every Decision<br/><span class="green">Fully Explainable</span></h1>
+
+    <div class="eval-card">
+      <div class="eval-header">
+        <div class="eval-title">Candidate Evaluation Report</div>
+        <div class="eval-verdict">HIRE</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Strengths</div>
+        <div class="eval-value green">Strong system design thinking, clean code architecture, excellent trade-off analysis</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Growth Areas</div>
+        <div class="eval-value amber">Time complexity optimization on edge cases, could deepen distributed systems knowledge</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">Hire Reason</div>
+        <div class="eval-value blue">Deep architecture knowledge with practical problem-solving approach. Communicates trade-offs clearly.</div>
+      </div>
+      <div class="eval-row">
+        <div class="eval-label">No-Hire Reason</div>
+        <div class="eval-value muted">N/A — strong fundamentals across all evaluation areas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🎙️</div>
+        <div class="feature-title">Voice AI Interviewer</div>
+        <div class="feature-desc">Real-time conversations that probe reasoning depth, not just code output</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-title">Multi-Round Coverage</div>
+        <div class="feature-desc">DSA, System Design, LLD, HLD, and Behavioral — all in one platform</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-title">Anti-Cheat Detection</div>
+        <div class="feature-desc">Catches AI-assisted cheating, tab-switching, and impersonation in real-time</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-title">Semantic Matching</div>
+        <div class="feature-desc">Vector embeddings match actual skills, not keywords. Find hidden talent.</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌐</div>
+        <div class="feature-title">24/7 Screening</div>
+        <div class="feature-desc">Screen across every timezone without adding headcount to your team</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👤</div>
+        <div class="feature-title">Human-in-the-Loop</div>
+        <div class="feature-desc">AI augments your team's judgment — every final decision stays with you</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

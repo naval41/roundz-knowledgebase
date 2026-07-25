@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1270px; height: 760px;
+    background: linear-gradient(135deg, #0A0F1C 0%, #0D1B2A 40%, #1B2838 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #E2E8F0;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+  /* Subtle grid pattern */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  /* Glow effects */
+  .glow-1 {
+    position: absolute; top: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 70%);
+    z-index: 0;
+  }
+  .glow-2 {
+    position: absolute; bottom: -100px; right: 200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .left {
+    flex: 1.1;
+    padding: 60px 50px 60px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(14, 165, 233, 0.15);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    color: #38BDF8;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    width: fit-content;
+  }
+  h1 {
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  h1 .highlight {
+    background: linear-gradient(135deg, #0EA5E9, #38BDF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: #94A3B8;
+    line-height: 1.6;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .stats {
+    display: flex;
+    gap: 32px;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-value {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #0EA5E9, #38BDF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: #64748B;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .right {
+    flex: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 50px 40px 20px;
+    z-index: 1;
+  }
+  .funnel-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+    backdrop-filter: blur(10px);
+  }
+  .funnel-title {
+    font-size: 15px;
+    color: #64748B;
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .funnel-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .funnel-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 36px;
+    width: 2px;
+    height: 14px;
+    background: rgba(14, 165, 233, 0.2);
+  }
+  .step-icon {
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 14px;
+    flex-shrink: 0;
+  }
+  .step-icon.blue { background: rgba(14, 165, 233, 0.2); color: #38BDF8; }
+  .step-icon.cyan { background: rgba(6, 182, 212, 0.2); color: #22D3EE; }
+  .step-icon.green { background: rgba(34, 197, 94, 0.2); color: #4ADE80; }
+  .step-text {
+    flex: 1;
+    font-size: 14.5px;
+    color: #CBD5E1;
+    line-height: 1.4;
+  }
+  .step-text strong { color: #E2E8F0; font-weight: 600; }
+  .step-number {
+    font-size: 13px;
+    color: #475569;
+    font-weight: 700;
+    min-width: 28px;
+  }
+  .step-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-left: 10px;
+    white-space: nowrap;
+  }
+  .step-badge.candidates { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+  .step-badge.shortlisted { background: rgba(14, 165, 233, 0.15); color: #38BDF8; }
+  .step-badge.hired { background: rgba(34, 197, 94, 0.15); color: #4ADE80; }
+
+  .logo {
+    position: absolute;
+    top: 28px;
+    left: 70px;
+    font-size: 22px;
+    font-weight: 800;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo .r-icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, #0EA5E9, #0284C7);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+  }
+  .logo span { color: #E2E8F0; }
+</style>
+</head>
+<body>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <div class="logo">
+    <div class="r-icon">R</div>
+    <span>roundz.ai</span>
+  </div>
+
+  <div class="left">
+    <div class="badge">AI-POWERED HIRING ENGINE</div>
+    <h1>Screen Engineers<br/><span class="highlight">10x Faster</span> with<br/>Voice AI Agents</h1>
+    <p class="subtitle">AI conducts real technical interviews — DSA, System Design, LLD, Behavioral — so your engineering team only talks to the top 20%.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">10x</div>
+        <div class="stat-label">Faster Screening</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">80%</div>
+        <div class="stat-label">Less CTO Time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">92%</div>
+        <div class="stat-label">Fraud Detection</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="funnel-card">
+      <div class="funnel-title">The 80/20 Hiring Model</div>
+
+      <div class="funnel-step">
+        <div class="step-icon blue">1</div>
+        <div class="step-text"><strong>100 candidates</strong> apply to your role</div>
+        <div class="step-badge candidates">100</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="step-icon blue">2</div>
+        <div class="step-text"><strong>AI matches</strong> resumes to skills</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="step-icon cyan">3</div>
+        <div class="step-text"><strong>40 shortlisted</strong> by match score</div>
+        <div class="step-badge shortlisted">40</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="step-icon cyan">4</div>
+        <div class="step-text"><strong>AI voice interviews</strong> — multi-round, 24/7</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="step-icon cyan">5</div>
+        <div class="step-text"><strong>AI evaluates</strong> with explainable reasoning</div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="step-icon green">6</div>
+        <div class="step-text"><strong>Top 20 recommended</strong> to your team</div>
+        <div class="step-badge hired">Top 20%</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

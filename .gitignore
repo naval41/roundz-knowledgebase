@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+**/.DS_Store
+
+# Copyrighted third-party material (do not publish). Distilled notes are kept instead.
+Founding_Sales.pdf
+Founding_Sales.txt
+*.zip
+
+# Editor
+.vscode/
+.idea/

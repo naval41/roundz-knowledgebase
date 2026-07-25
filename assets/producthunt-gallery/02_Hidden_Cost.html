@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 1270px;
+      height: 760px;
+      background: linear-gradient(135deg, #0A0F1C 0%, #0D1B2A 40%, #1B2838 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #E2E8F0;
+      overflow: hidden;
+      position: relative;
+      padding: 60px 80px;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+
+    .glow {
+      position: absolute;
+      top: -150px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 40px;
+      z-index: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .r-icon {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #0EA5E9, #0284C7);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 44px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .header h1 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .header h1 .orange {
+      color: #FBBF24;
+    }
+
+    .header p {
+      font-size: 17px;
+      color: #94A3B8;
+    }
+
+    .cards {
+      display: flex;
+      gap: 24px;
+      z-index: 1;
+      position: relative;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1;
+      max-width: 260px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(14, 165, 233, 0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .card:nth-child(1)::before {
+      background: linear-gradient(90deg, #EF4444, #F97316);
+    }
+
+    .card:nth-child(2)::before {
+      background: linear-gradient(90deg, #F97316, #FBBF24);
+    }
+
+    .card:nth-child(3)::before {
+      background: linear-gradient(90deg, #FBBF24, #EAB308);
+    }
+
+    .card:nth-child(4)::before {
+      background: linear-gradient(90deg, #EF4444, #DC2626);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 16px;
+    }
+
+    .card:nth-child(1) .card-icon {
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    .card:nth-child(2) .card-icon {
+      background: rgba(249, 115, 22, 0.15);
+    }
+
+    .card:nth-child(3) .card-icon {
+      background: rgba(234, 179, 8, 0.15);
+    }
+
+    .card:nth-child(4) .card-icon {
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    .card-value {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .card:nth-child(1) .card-value {
+      color: #F87171;
+    }
+
+    .card:nth-child(2) .card-value {
+      color: #FB923C;
+    }
+
+    .card:nth-child(3) .card-value {
+      color: #FBBF24;
+    }
+
+    .card:nth-child(4) .card-value {
+      color: #F87171;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #CBD5E1;
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 40px;
+      left: 80px;
+      right: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .bottom-text {
+      font-size: 14px;
+      color: #64748B;
+    }
+
+    .bottom-cta {
+      background: linear-gradient(135deg, #0EA5E9, #0284C7);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 10px;
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow"></div>
+
+  <div class="logo">
+    <div class="r-icon">R</div>
+    <span>Roundz AI</span>
+  </div>
+
+  <div class="header">
+    <h1>The <span class="orange">$555K/yr</span> Hidden Cost of Manual Hiring</h1>
+    <p>What broken hiring actually costs a typical Series A–C startup every year</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">💸</div>
+      <div class="card-value">$90K+</div>
+      <div class="card-title">Bad Hire Tax</div>
+      <div class="card-desc">One wrong hire costs 6 months of roadmap, team morale, and re-hiring effort</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⏳</div>
+      <div class="card-value">$24K/mo</div>
+      <div class="card-title">Vacancy Tax</div>
+      <div class="card-desc">Every unfilled seat bleeds revenue. Top candidates gone in just 10 days</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔥</div>
+      <div class="card-value">$225K/yr</div>
+      <div class="card-title">CTO Time Tax</div>
+      <div class="card-desc">Engineering leaders spend 33% of bandwidth on screening instead of shipping</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📉</div>
+      <div class="card-value">$555K+</div>
+      <div class="card-title">Total Annual Loss</div>
+      <div class="card-desc">The compounding cost of manual hiring at scale — and it only grows</div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bottom-text">Source: US Dept of Labor, Stripe Developer Coefficient, Officevibe Research</div>
+    <div class="bottom-cta">See How Roundz Fixes This →</div>
+  </div>
+</body>
+
+</html>

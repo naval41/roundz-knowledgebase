@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px; height: 1080px;
+    background: linear-gradient(135deg, #0A0F1C 0%, #0D1B2A 40%, #1B2838 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 80px;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  .glow-1 {
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+    z-index: 0;
+  }
+  .glow-2 {
+    position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .content {
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .logo img {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+  }
+  .logo-text {
+    font-size: 28px;
+    font-weight: 800;
+    color: #E2E8F0;
+  }
+
+  h1 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    max-width: 800px;
+  }
+  h1 .highlight {
+    background: linear-gradient(135deg, #0EA5E9, #38BDF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h1 .green {
+    color: #4ADE80;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    color: #94A3B8;
+    line-height: 1.6;
+    max-width: 700px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(14, 165, 233, 0.15);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    color: #38BDF8;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  .swipe {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    font-size: 14px;
+    color: #475569;
+    font-weight: 500;
+  }
+  .page {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    font-size: 14px;
+    color: #475569;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <div class="content">
+    <div class="logo">
+      <img src="../producthunt-gallery/Roundz_Logo.png" alt="Roundz AI" />
+      <div class="logo-text">Roundz AI</div>
+    </div>
+
+    <h1>How I Closed a<br/><span class="highlight">Senior Backend Hire</span><br/>in <span class="green">12 Days</span></h1>
+
+    <p class="subtitle">From 87 applicants to signed offer.<br/>Here's the exact process.</p>
+
+    <div class="badge">REAL RECRUITER STORY</div>
+  </div>
+
+  <div class="page">1 / 10</div>
+  <div class="swipe">Swipe &rarr;</div>
+</body>
+</html>

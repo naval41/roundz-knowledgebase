@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1270px; height: 760px;
+    background: linear-gradient(135deg, #0A0F1C 0%, #0D1B2A 50%, #1B2838 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #E2E8F0;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  .glow-1 {
+    position: absolute; top: -80px; left: 300px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+    z-index: 0;
+  }
+  .glow-2 {
+    position: absolute; bottom: -80px; right: 100px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .logo {
+    position: absolute;
+    top: 28px;
+    left: 60px;
+    font-size: 20px;
+    font-weight: 800;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .r-icon {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, #0EA5E9, #0284C7);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+  }
+
+  /* Simulated interview session */
+  .left {
+    flex: 1.15;
+    padding: 80px 30px 50px 60px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .session-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 580px;
+  }
+  .session-header {
+    background: rgba(14, 165, 233, 0.08);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+  }
+  .session-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #38BDF8;
+  }
+  .session-status {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ADE80;
+  }
+  .session-body {
+    padding: 20px 24px;
+  }
+  .session-info {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.06);
+  }
+  .info-item {
+    font-size: 12px;
+    color: #64748B;
+  }
+  .info-item strong {
+    color: #CBD5E1;
+    display: block;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+
+  /* Conversation transcript */
+  .transcript {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .msg {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .msg-avatar {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .msg-avatar.ai { background: rgba(14, 165, 233, 0.2); color: #38BDF8; }
+  .msg-avatar.human { background: rgba(168, 85, 247, 0.2); color: #C084FC; }
+  .msg-bubble {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #CBD5E1;
+    max-width: 460px;
+  }
+  .msg-bubble .label {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    display: block;
+  }
+  .msg-bubble .label.ai { color: #38BDF8; }
+  .msg-bubble .label.human { color: #C084FC; }
+
+  /* Right side: code editor simulation */
+  .right {
+    flex: 0.85;
+    padding: 80px 60px 50px 30px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .editor-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 460px;
+  }
+  .editor-header {
+    background: rgba(14, 165, 233, 0.08);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.red { background: #EF4444; }
+  .dot.yellow { background: #FBBF24; }
+  .dot.green { background: #22C55E; }
+  .editor-tab {
+    margin-left: 16px;
+    font-size: 12px;
+    color: #64748B;
+    font-weight: 600;
+  }
+  .editor-body {
+    padding: 18px 20px;
+    font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .line { display: flex; }
+  .line-num {
+    color: #475569;
+    width: 30px;
+    text-align: right;
+    margin-right: 16px;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .keyword { color: #C084FC; }
+  .function { color: #38BDF8; }
+  .string { color: #4ADE80; }
+  .comment { color: #475569; font-style: italic; }
+  .type { color: #FBBF24; }
+  .normal { color: #CBD5E1; }
+
+  .caption {
+    text-align: center;
+    font-size: 13px;
+    color: #475569;
+    margin-top: 16px;
+    font-weight: 500;
+  }
+  .caption strong { color: #38BDF8; }
+</style>
+</head>
+<body>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <div class="logo">
+    <div class="r-icon">R</div>
+    <span>roundz.ai</span>
+  </div>
+
+  <div class="left">
+    <div class="session-card">
+      <div class="session-header">
+        <div class="session-title">AI Voice Interview — Live Session</div>
+        <div class="session-status">In Progress</div>
+      </div>
+      <div class="session-body">
+        <div class="session-info">
+          <div class="info-item">Round<strong>System Design (HLD)</strong></div>
+          <div class="info-item">Level<strong>Senior Engineer</strong></div>
+          <div class="info-item">Duration<strong>38:24 / 60:00</strong></div>
+        </div>
+        <div class="transcript">
+          <div class="msg">
+            <div class="msg-avatar ai">AI</div>
+            <div class="msg-bubble">
+              <span class="label ai">Roundz AI Interviewer</span>
+              You mentioned using Redis for caching. Walk me through what happens when a cache key expires under high concurrent load. How would you prevent a thundering herd?
+            </div>
+          </div>
+          <div class="msg">
+            <div class="msg-avatar human">JS</div>
+            <div class="msg-bubble">
+              <span class="label human">Candidate — John S.</span>
+              Great question. I'd implement a distributed lock using Redis SET NX with a short TTL. The first request that finds the cache miss acquires the lock and rebuilds the cache, while other requests either wait or serve stale data...
+            </div>
+          </div>
+          <div class="msg">
+            <div class="msg-avatar ai">AI</div>
+            <div class="msg-bubble">
+              <span class="label ai">Roundz AI Interviewer</span>
+              Good approach. What's the failure mode if the lock holder crashes before releasing? How would you handle that edge case?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">Real-time voice conversation with <strong>adaptive follow-up questions</strong></div>
+  </div>
+
+  <div class="right">
+    <div class="editor-card">
+      <div class="editor-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+        <div class="editor-tab">solution.py — DSA Round</div>
+      </div>
+      <div class="editor-body">
+        <div class="line"><span class="line-num">1</span><span class="keyword">def</span> <span class="function">find_median</span><span class="normal">(</span><span class="type">nums1</span><span class="normal">,</span> <span class="type">nums2</span><span class="normal">):</span></div>
+        <div class="line"><span class="line-num">2</span><span class="comment">  # Binary search on shorter array</span></div>
+        <div class="line"><span class="line-num">3</span><span class="keyword">  if</span> <span class="function">len</span><span class="normal">(nums1) ></span> <span class="function">len</span><span class="normal">(nums2):</span></div>
+        <div class="line"><span class="line-num">4</span><span class="normal">    nums1, nums2 = nums2, nums1</span></div>
+        <div class="line"><span class="line-num">5</span></div>
+        <div class="line"><span class="line-num">6</span><span class="normal">  m, n =</span> <span class="function">len</span><span class="normal">(nums1),</span> <span class="function">len</span><span class="normal">(nums2)</span></div>
+        <div class="line"><span class="line-num">7</span><span class="normal">  lo, hi =</span> <span class="type">0</span><span class="normal">, m</span></div>
+        <div class="line"><span class="line-num">8</span></div>
+        <div class="line"><span class="line-num">9</span><span class="keyword">  while</span> <span class="normal">lo <= hi:</span></div>
+        <div class="line"><span class="line-num">10</span><span class="normal">    i = (lo + hi) //</span> <span class="type">2</span></div>
+        <div class="line"><span class="line-num">11</span><span class="normal">    j = (m + n +</span> <span class="type">1</span><span class="normal">) //</span> <span class="type">2</span> <span class="normal">- i</span></div>
+        <div class="line"><span class="line-num">12</span></div>
+        <div class="line"><span class="line-num">13</span><span class="normal">    left_a =</span> <span class="function">float</span><span class="normal">(</span><span class="string">'-inf'</span><span class="normal">)</span> <span class="keyword">if</span> <span class="normal">i ==</span> <span class="type">0</span></div>
+        <div class="line"><span class="line-num">14</span><span class="keyword">      else</span> <span class="normal">nums1[i -</span> <span class="type">1</span><span class="normal">]</span></div>
+        <div class="line"><span class="line-num">15</span><span class="normal">    right_a =</span> <span class="function">float</span><span class="normal">(</span><span class="string">'inf'</span><span class="normal">)</span> <span class="keyword">if</span> <span class="normal">i == m</span></div>
+        <div class="line"><span class="line-num">16</span><span class="keyword">      else</span> <span class="normal">nums1[i]</span></div>
+      </div>
+    </div>
+    <div class="caption"><strong>Live code editor</strong> with syntax highlighting</div>
+  </div>
+</body>
+</html>
