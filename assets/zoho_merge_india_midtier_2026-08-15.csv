@@ -1,0 +1,29 @@
+first_name,full_name,title,company,city,email,segment,verify_flag
+Amrit,Amrit Swain,Lead Talent Acquisition Manager,Tessolve,Bhubaneshwar,amritanshuman.swain@tessolve.com,segment2_services,
+Chandra,Chandra Mohapatra,Sr. Director & Head Talent Acquisition,ACL Digital,Bengaluru,csmohapatra@acldigital.com,segment2_services,
+Vishal,Vishal Bansal,Senior Director & Head of Talent Acquisition,ThoughtFocus,Bengaluru,vishal.bansal@thoughtfocus.com,segment2_services,
+Abhishek,Abhishek Bhardwaj,Senior Director - Head of Talent Acquisition,Iris Software,Noida,abhishek.bhardwaj01@irissoftware.com,segment2_services,
+Rachit,Rachit Chandra,"Director, Head of Talent Acquisition-APAC",Cloudera,Gurugram,rchandra@cloudera.com,segment1_product,
+Nehaa,Nehaa Kesharkar,General Manager - Head Talent Acquisition,ESDS Software Solution,Pimpri-Chinchwad,neha.kesharkar@esds.co.in,segment2_services,
+Rajendra,Rajendra Prasad,"SVP, Head of Talent Acquisition",Dream11,Hyderabad,rajendra.prasad@dream11.com,segment1_product,
+Sumit,Sumit Premi,Head - Talent Acquisition,Razorpay,Bengaluru,sumit.premi@razorpay.com,segment1_product,
+Murali,Murali Gogineni,Talent Acquisition Lead,SmartSoC Solutions,Bengaluru,murali.krishna@smartsocs.com,segment2_services,
+Augustine,Augustine Raj,Talent Acquisition Lead,Indegene,Bengaluru,augustine.raj@indegene.com,segment2_services,
+Shruthi,Shruthi Nagaraj,Talent Acquisition Lead,Lingaro,Bengaluru,shruthi.n@lingarogroup.com,segment2_services,
+Shivraj,Shivraj Khirwar,Talent Acquisition Lead,vivo Mobile India,Noida,shivraj.hr@vivo.com,segment1_product,
+Savita,Savita Tomer,Talent Acquisition Lead,Noventiq,New Delhi,savita.tomer@noventiq.com,segment2_services,
+Akanksh,Akanksh Gupta,Talent Acquisition Lead,JK Tech,Noida,akanksh.gupta@jktech.com,segment2_services,
+Yogita,Yogita Janugade,Talent Acquisition Lead,OpenGov,Pune,yjanugade@opengov.com,segment1_product,
+Ramya,Ramya Krishnan,Talent Acquisition Lead,Freshworks,Chennai,ramya.krishnan@freshworks.com,segment1_product,
+Rahul,Rahul Chakraborty,Talent Acquisition Lead,Kiya.ai,Mumbai,rahul.chakraborty@kiya.ai,segment1_product,
+Ramsha,Ramsha Meraj,Talent Acquisition Lead,Whatfix,Bengaluru,ramsha.meraj@whatfix.com,segment1_product,
+Rohit,Rohit Negi,Talent Acquisition Lead,Trantor,Chandigarh,rohit.negi@trantorinc.com,segment2_services,
+Riddhi,Riddhi Mehta,Talent Acquisition Lead,Simform,Ahmedabad,riddhi.m@simformsolutions.com,segment1_product,
+Rajadurai,Rajadurai Pandian,Talent Acquisition Lead,Diamondpick,Chennai,rajadurai.p@galent.com,segment2_services,VERIFY_COMPANY_NAME
+Nutan,Nutan Hande,Talent Acquisition Lead,BMW TechWorks India,,nutan.hande@bmwtechworks.in,segment1_product,VERIFY_CITY
+Nadeem,Nadeem Pasha,Head of Talent Acquisition,Robosoft Technologies,Bengaluru,nadeem.pasha@robosoftin.com,segment2_services,
+Yogesh,Yogesh Luthra,Head of Talent Acquisition,,Gurugram,yogesh.luthra@igtsolutions.com,segment2_services,VERIFY_COMPANY_NAME
+Naveen,Naveen Yadav,Head of Talent Acquisition,Sysnet Global Technologies,Gurugram,naveen.rec@sysnetglobal.com,segment2_services,
+Rathish,Rathish Narayanan,Head Talent Acquisition,Azentio,Bengaluru,rathish.n@azentio.com,segment1_product,
+Yashpal,Yashpal Adpawar,Head of Talent Acquisition,Knorr-Bremse Technology Center India,,yashpal.adpawar@knorr-bremse.com,segment2_services,VERIFY_CITY
+Sunil,Sunil Parambath,Head - Talent Acquisition,Arcesium,Hyderabad,sunil.parambath@arcesium.com,segment1_product,

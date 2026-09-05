@@ -54,8 +54,8 @@ your team ships now anyway.
 
 I'd rather show you a real report than describe it. Worth 20 minutes?
 
-Naveen
-Founder, Roundz
+Navneet
+Founder, Roundz AI
 ```
 
 ### 2. Owen Luddy — FalconX
@@ -85,8 +85,8 @@ purpose and scores how well they direct it.
 
 I'd rather show you a real report than describe it. Worth 20 minutes?
 
-Naveen
-Founder, Roundz
+Navneet
+Founder, Roundz AI
 ```
 
 ### 3. Eshita Motiani — Madhive
@@ -116,8 +116,8 @@ judgment.
 
 I'd rather show you a real report than describe it. Worth 20 minutes?
 
-Naveen
-Founder, Roundz
+Navneet
+Founder, Roundz AI
 ```
 
 ### 4. Nicole Minaudo — Detroit Labs
@@ -148,8 +148,8 @@ cleared a real technical bar.
 
 I'd rather show you a real report than describe it. Worth 20 minutes?
 
-Naveen
-Founder, Roundz
+Navneet
+Founder, Roundz AI
 ```
 
 ---
@@ -183,8 +183,8 @@ engineers only meet candidates who already cleared a real bar.
 
 I'd rather show you a real report than describe it. Worth 20 minutes?
 
-Naveen
-Founder, Roundz
+Navneet
+Founder, Roundz AI
 ```
 
 ### 6. Jason Zerega — Intersection Co.
@@ -213,8 +213,8 @@ judgment.
 
 I'd rather show you a real report than describe it. Worth 20 minutes?
 
-Naveen
-Founder, Roundz
+Navneet
+Founder, Roundz AI
 ```
 
 ### 7. Utkarsh Mishra — OLX India
@@ -244,8 +244,8 @@ Your engineers only meet candidates who already cleared a real bar.
 
 I'd rather show you a real report than describe it. Worth 20 minutes?
 
-Naveen
-Founder, Roundz
+Navneet
+Founder, Roundz AI
 ```
 
 ---

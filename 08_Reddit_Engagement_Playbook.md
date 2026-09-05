@@ -46,6 +46,8 @@
 
 ## PART 2: SUBREDDIT MAP
 
+> **Recruiter-side and founder-side subs live in `17_Recruiter_And_Founder_Sub_Map.md`** (verified 2026-08-14). Short version: every recruiter/HR sub bans promo and DM solicitation, so they are listen-only; trial recruitment happens in the founder/beta subs.
+
 > **Rewritten 2026-07-30** after a full research pass (subscriber counts, post velocity, and rule text fetched live via `about.json` / `about/rules.json`). Vivek's direction for this pass: expand into candidate-pain subs and move to a "moderate" risk posture (owned value posts allowed, links only where explicitly permitted). The older 2026-07-11 table is kept below for history.
 
 ### Tier A — candidate-pain subs (expansion targets, verified 2026-07-30)
@@ -150,6 +152,43 @@ The subs Vivek selected for expansion are almost all promo-hostile, so the hones
 - `public_description`: **empty**
 - `description` (bio): **empty**
 - `title`: **"MattSmall29"** — which does not match the display name the log says was set on 2026-07-11 ("Naveen_RoundzAI"), and matches nothing about the account or the product. To a visitor this reads as an abandoned or recycled account.
+
+**STATUS 2026-08-05: BLOCKED, DEFERRED TO WEEK OF 2026-08-10 BY VIVEK.** Three save attempts were made through the logged-in settings UI (display name, then About description, then About again after a full page reload). The first two returned Reddit's error banner "We had some issues saving your changes. Please try again." The third showed **no error but silently did not persist** — reopening the dialog showed the field empty at 0/200, and `about.json` still returned `title: "MattSmall29"`, `public_description: ""`. Verified server-side each time rather than trusting the UI. Stopped rather than retrying further, since repeatedly hammering a settings endpoint that is rejecting writes is a poor trade on an account this age with prior mod history.
+
+Possible causes, untested: a transient Reddit settings bug; an account-level restriction on profile edits (this account has r/recruiting mod history); or a stuck server-side value — the last would also explain why the log's 2026-07-11 claim that a display name was set never actually took effect.
+
+**STATUS 2026-08-10 (FINAL): ROOT CAUSE FOUND — the profile subreddit record does not exist server-side.** Saving via old Reddit's user-subreddit settings form (`old.reddit.com/user/BranchSmall6459/about/edit/`, a different API from the new-Reddit profile endpoint) returned **`No subreddit found with id t5_iwr04i`** — which is this account's own profile subreddit per `about.json`. Every profile write fails because they all target a record Reddit's backend cannot find. Not fixable by retrying, by the UI, or by hand. **Action: support ticket with that exact error. Decision to weigh if unresolved: this account may never be able to have a profile, which would permanently close the conversion path on it.** Full detail in the log entry for 2026-08-10.
+
+**Superseded detail from earlier the same day, kept for the record:** Vivek chose the credibility-first bio and set the founder name as **Navneet**. Three more writes were attempted through the logged-in settings UI:
+- **Display name** `Navneet (Roundz AI)` → red banner "We had some issues saving your changes. Please try again."
+- **About description** (185/200, text below) → same banner.
+- **Social link** (`Free mock interview` → `https://roundz.ai`) → **no error, and the settings row briefly showed "1"**, but the public profile still shows an empty SOCIAL LINKS section and a reload of the settings page shows the count gone. Silent non-persistence, the same pattern as the third attempt on 2026-08-05.
+
+That is **six failed writes across two dates and three different fields**, one of which fails silently. Stopped rather than retrying further. Conclusion: this is not a transient Reddit bug and it is not an automation artifact of how the fields are being filled. It is either an account-level restriction on profile edits or a stuck server-side record. **The next step is not another retry from a session — it is Vivek attempting one edit by hand in a normal browser, and if that also fails, raising it with Reddit support.** Until then the profile funnel cannot be built, and every comment continues to land on a blank userpage.
+
+Values Vivek approved on 2026-08-10, ready to paste the moment writes work:
+- **Display name:** `Navneet (Roundz AI)`
+- **About (185 chars):** `Founder, Roundz AI (voice AI interviews). I read interview transcripts and evaluations at volume, so most of what I post here is from the scoring side of the table. Free mock: roundz.ai`
+- **Social link:** display text `Free mock interview`, URL `https://roundz.ai`
+- **Avatar:** still Reddit default. Any uploaded image beats it; combined with a blank bio the default reads as a throwaway account.
+
+**Vivek's decision 2026-08-05: leave the display name alone for now, revisit next week.** Worth him trying the edit by hand in a normal browser session first — if it fails there too, that confirms it is account- or Reddit-side rather than an automation artifact, and is worth raising with Reddit support independently of this project.
+
+**READY-TO-PASTE VALUES when it is retried (written 2026-08-05 from `01-base-knowledge/Product_Ground_Truth.md` + the live roundz.ai homepage):**
+
+- **About / bio** (Reddit caps this around 200 characters):
+  > Building Roundz AI, a voice AI interview platform — mock practice for candidates, screening loops for hiring teams. Mostly here to talk about interviewing and how candidates actually get scored.
+- **Website link:** `https://roundz.ai`
+- **Display name:** left for Vivek to decide (see note below). Current value "MattSmall29" matches nothing and should go regardless.
+
+Why this wording specifically:
+- It discloses the founder relationship in the first three words, which is the non-negotiable from Part 1 and is already implied by 15 comments' worth of hiring-side advice.
+- It names both audiences, matching the homepage ("I'm hiring" / "I'm a candidate"), so a visitor from either side of a thread lands somewhere coherent.
+- The closing line explains *why this account comments on hiring*, which is the actual question a reader clicking the username has.
+- It deliberately avoids every claim flagged as unsafe in Product_Ground_Truth §2-3: no code-execution claim, no "10,000+ questions" (unverified against prod), no "92% fraud detection" or "$555K/year" (those are third-party research figures, not Roundz-measured outcomes). Nothing here needs walking back later.
+- No marketing vocabulary, consistent with Part 5 writing rules.
+
+**Display-name decision is Vivek's, not the assistant's.** The log says a display name "Naveen_RoundzAI" was set on 2026-07-11, but `about.json` shows "MattSmall29" — they disagree, and neither obviously corresponds to a real person. Inventing a human name would sit badly next to the account's own no-fabrication rule and next to comments written in the first person as a founder. Recommended options, in order: (a) Vivek's own first name, which is the honest version and costs nothing; (b) a non-person handle that makes no identity claim, e.g. "Roundz AI (founder)". Avoid inventing a new human-sounding name.
 
 **Fix this before any other growth work.** It is the single highest-leverage, zero-risk change available:
 1. Set the profile title to a real name consistent with how we comment.
@@ -257,6 +296,16 @@ Up to 5 sessions/day of RESEARCH and DRAFTING are fine. Autonomous mass-posting 
 2. Pick the 2-4 best opportunities (thread age < 4h, matches our expertise, sub allows us). Prefer the new Tier A subs while building history there, and check each candidate's sub against the Phase 2 mention matrix before drafting anything with a product reference.
 3. Draft comments/posts per Part 5 rules, run them through the authenticity checklist.
 4. Queue drafts for Vivek's review. Post only after explicit go-ahead, then log results.
+
+### Deferring a batch overnight (added 2026-08-04, after DRAFT-149 was lost to saturation)
+
+Vivek occasionally asks for two sessions in one day. When the request arrives late, the workable version is to draft a second batch that evening and post it the next morning rather than clustering both batches into one evening. **That works, but it has a specific failure mode, observed on 2026-08-04:** DRAFT-149 was drafted against a thread at 28 ups / 10 comments and by morning that thread was at 578 ups / 68 comments, with both halves of our angle independently made by other commenters. The draft had to be discarded. DRAFT-150, drafted the same evening against an 8-up thread, was still perfectly valid 15 hours later and posted unchanged.
+
+Rules for deferred batches:
+- **Do not defer a fast-climbing thread.** If a thread is already at 20+ ups or gaining several comments per hour within its first hour or two, it will be saturated by morning. Either post into it the same session or do not pick it for a deferred batch.
+- **Deferred picks should be slow-burn threads**: modest upvotes, few comments, a specific question that the sub is not rushing to answer. Those hold their value overnight.
+- **Always re-read the thread in full before posting a deferred draft**, and discard rather than post if the angle has been taken. A stale comment arriving 15 hours late into a crowded thread is worse than no comment — it reads as someone who did not read the room.
+- Record discards in the log with the reasoning, not just the posts. The discard is the evidence that the gate is working.
 
 ### Posting pacing (added 2026-07-29, after repeated same-session rate limits)
 Session 38 (2026-07-29) hit Reddit's account-wide comment rate limit on 2 of 3 posts submitted back-to-back within the same "go ahead" batch (9-minute cooldown, then a 7-minute cooldown on the very next attempt). Submitting approved drafts one immediately after another is also just a bot tell on its own, independent of whether Reddit's limiter fires — a real person pauses, reads other things, gets distracted. Fix, effective this session onward:
