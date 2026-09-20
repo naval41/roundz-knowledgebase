@@ -10,3 +10,9 @@ Founding_Sales.txt
 # Editor
 .vscode/
 .idea/
+
+# Credentials (real config lives in ~/.config/roundz/, never in the repo)
+zoho_senders.json
+**/zoho_senders.json
+.env
+*.refresh_token

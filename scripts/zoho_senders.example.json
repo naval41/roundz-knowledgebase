@@ -1,0 +1,16 @@
+{
+  "vivek": {
+    "client_id": "1000.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "client_secret": "REPLACE_WITH_CLIENT_SECRET",
+    "refresh_token": "1000.REPLACE_WITH_REFRESH_TOKEN.REPLACE",
+    "from_address": "vivek@mail.roundz.ai",
+    "display_name": "Vivek"
+  },
+  "navneet": {
+    "client_id": "1000.YYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+    "client_secret": "REPLACE_WITH_CLIENT_SECRET",
+    "refresh_token": "1000.REPLACE_WITH_REFRESH_TOKEN.REPLACE",
+    "from_address": "navneet@send.roundz.ai",
+    "display_name": "Navneet"
+  }
+}
